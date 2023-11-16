@@ -131,3 +131,6 @@ dist
 
 # macOS system files
 .DS_STORE
+
+# Svelte
+.svelte-kit
