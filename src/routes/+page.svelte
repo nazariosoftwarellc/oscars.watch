@@ -29,6 +29,10 @@
     overflow: scroll;
     white-space: nowrap;
     padding: 4rem 0;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .poster-list-item {
     margin: 0 2rem;
@@ -40,7 +44,6 @@
 
     img {
       height: 40rem;
-    margin-bottom: 1rem;
     }
   }
 </style>
