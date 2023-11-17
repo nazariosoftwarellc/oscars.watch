@@ -1,17 +1,46 @@
 <script lang="ts">
   import type { ResolvedOscarCategoryList } from '$lib/types/resolved-data';
 
-  let { data } = $props<{data: ResolvedOscarCategoryList}>();
+  let { data } = $props<{ data: ResolvedOscarCategoryList }>();
 </script>
 
-<h2>2023 Oscar Nominees</h2>
 {#each data.categories as category}
   <section>
-    <h3>{category.name}</h3>
-    <ul>
+    <h2>{category.name}</h2>
+    <div class="poster-list">
       {#each category.movies as movie}
-        <li>{movie.title}</li>
+        <div class="poster-list-item">
+          <img
+            src={'https://image.tmdb.org/t/p/original' + movie.poster_path}
+            alt="{movie.title} poster"
+          />
+        </div>
       {/each}
-    </ul>
+    </div>
   </section>
 {/each}
+
+<style lang="scss">
+  section {
+    margin: 0 5rem;
+  }
+  .poster-list {
+    border: 1px solid;
+    overflow: scroll;
+    white-space: nowrap;
+    padding: 4rem 0;
+  }
+  .poster-list-item {
+    margin: 0 2rem;
+    display: inline-block;
+
+    &:first-child {
+      margin-left: 4rem;
+    }
+
+    img {
+      height: 40rem;
+    margin-bottom: 1rem;
+    }
+  }
+</style>
