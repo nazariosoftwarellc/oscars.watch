@@ -1,4 +1,5 @@
 <script lang="ts">
+  import MovieList from '$lib/components/movie-list.svelte';
   import type { ResolvedOscarCategoryList } from '$lib/types/resolved-data';
 
   let { data } = $props<{ data: ResolvedOscarCategoryList }>();
@@ -7,43 +8,12 @@
 {#each data.categories as category}
   <section>
     <h2>{category.name}</h2>
-    <div class="poster-list">
-      {#each category.movies as movie}
-        <div class="poster-list-item">
-          <img
-            src={'https://image.tmdb.org/t/p/original' + movie.poster_path}
-            alt="{movie.title} poster"
-          />
-        </div>
-      {/each}
-    </div>
+    <MovieList movies={category.movies} />
   </section>
 {/each}
 
 <style lang="scss">
   section {
     margin: 0 5rem;
-  }
-  .poster-list {
-    border: 1px solid;
-    overflow: scroll;
-    white-space: nowrap;
-    padding: 4rem 0;
-    
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  .poster-list-item {
-    margin: 0 2rem;
-    display: inline-block;
-
-    &:first-child {
-      margin-left: 4rem;
-    }
-
-    img {
-      height: 40rem;
-    }
   }
 </style>
