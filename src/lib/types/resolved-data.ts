@@ -1,4 +1,5 @@
 import type { TMDBMovie } from './tmdb-movie';
+import type { TMDBMovieDetails } from './tmdb-movie-details';
 
 export type OscarCategory = {
   name: string;
@@ -7,4 +8,8 @@ export type OscarCategory = {
 
 export type ResolvedOscarCategoryList = {
   categories: OscarCategory[];
+}
+
+export type ResolvedMovieDetails = {
+  movieDetails: TMDBMovieDetails;
 }

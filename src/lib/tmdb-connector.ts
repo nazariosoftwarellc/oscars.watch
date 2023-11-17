@@ -1,5 +1,7 @@
 import type { TMDBList } from './types/tmdb-list';
+import type { TMDBMovieDetails } from './types/tmdb-movie-details';
 import * as bpList from '../bp.json';
+import * as eeaao from '../movie.json'
 
 class TMDBConnector {
   // private readToken: string;
@@ -18,6 +20,16 @@ class TMDBConnector {
     // const response = await fetch(url, { headers });
     // return await response.json();
     return bpList as any;
+  }
+
+  async getMovieDetails(movieId: number): Promise<TMDBMovieDetails> {
+    // const url = `https://api.themoviedb.org/3/movie/${movieId}`
+    // const headers = {
+    //   Authorization: `Bearer ${this.readToken}`
+    // }
+    // const response = await fetch(url, { headers });
+    // return await response.json();
+    return JSON.parse(JSON.stringify(eeaao));
   }
 }
 
