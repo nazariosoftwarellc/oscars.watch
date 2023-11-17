@@ -42,6 +42,7 @@
     "arrowParens": "avoid"
   },
   "dependencies": {
+    "dayjs": "^1.11.10",
     "isomorphic-fetch": "^3.0.0"
   }
 }
