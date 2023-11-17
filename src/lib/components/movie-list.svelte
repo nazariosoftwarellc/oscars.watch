@@ -1,16 +1,14 @@
 <script lang="ts">
   import type { TMDBMovie } from '$lib/types/tmdb-movie';
+  import MoviePoster from './movie-poster.svelte';
 
   let { movies } = $props<{ movies: TMDBMovie[] }>();
 </script>
 
 <div class="poster-list">
   {#each movies as movie}
-    <div class="poster-list-item">
-      <img
-        src={'https://image.tmdb.org/t/p/original' + movie.poster_path}
-        alt="{movie.title} poster"
-      />
+    <div class="movie-poster-container">
+      <MoviePoster {movie} />
     </div>
   {/each}
 </div>
@@ -26,16 +24,13 @@
       display: none;
     }
   }
-  .poster-list-item {
+
+  .movie-poster-container {
     margin: 0 2rem;
     display: inline-block;
 
     &:first-child {
       margin-left: 4rem;
-    }
-
-    img {
-      height: 40rem;
     }
   }
 </style>
