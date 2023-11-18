@@ -1,7 +1,9 @@
 import type { TMDBList } from './types/tmdb-list';
 import type { TMDBMovieDetails } from './types/tmdb-movie-details';
-import * as bpList from '../bp.json';
-import * as eeaao from '../movie.json'
+import * as bpList from '../mock-data/bp.json';
+import * as eeaao from '../mock-data/movie.json';
+import * as crew from '../mock-data/crew.json';
+import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
 
 class TMDBConnector {
   // private readToken: string;
@@ -12,7 +14,7 @@ class TMDBConnector {
     // }
   }
 
-  async getList(listId: number): Promise<TMDBList>  {
+  async getList(listId: number): Promise<TMDBList> {
     // const url = `https://api.themoviedb.org/3/list/${listId}`
     // const headers = {
     //   Authorization: `Bearer ${this.readToken}`
@@ -30,6 +32,10 @@ class TMDBConnector {
     // const response = await fetch(url, { headers });
     // return await response.json();
     return JSON.parse(JSON.stringify(eeaao));
+  }
+
+  async getMovieCredits(movieId: number): Promise<TMDBMovieCredits> {
+    return JSON.parse(JSON.stringify(crew));
   }
 }
 

@@ -4,18 +4,25 @@
 
   let { data } = $props<{ data: ResolvedMovieDetails }>();
   const bannerUrl = $derived(
-    'https://image.tmdb.org/t/p/original' + data.movieDetails.backdrop_path
+    'https://image.tmdb.org/t/p/original' + data.details.backdrop_path
   );
   const releaseDate = $derived(
-    dayjs(data.movieDetails.release_date).format('MMMM D, YYYY')
+    dayjs(data.details.release_date).format('MMMM D, YYYY')
+  );
+  const directors = $derived(
+    data.credits.crew
+      .filter(person => person.job?.toLowerCase() === 'director')
+      .map(person => person.name)
+      .join(', ')
   );
 </script>
 
 <div id="banner" style="background-image: url('{bannerUrl}')">
-  <h2 class="rounded">{data.movieDetails.title}</h2>
+  <h2 class="rounded">{data.details.title}</h2>
   <div id="metadata" class="rounded">
     <p>Released: {releaseDate}</p>
-    <p>Directed by: PLACEHOLDER</p>
+    <p>Directed by {directors}</p>
+    <ul />
     <p>Starring:</p>
     <ul>
       <li>PLACEHOLDER</li>
