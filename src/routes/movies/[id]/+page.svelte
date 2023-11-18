@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
+  import Credits from '$lib/components/credits.svelte';
+import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
   import dayjs from 'dayjs';
 
   let { data } = $props<{ data: ResolvedMovieDetails }>();
@@ -19,16 +20,7 @@
 
 <div id="banner" style="background-image: url('{bannerUrl}')">
   <h2 class="rounded">{data.details.title}</h2>
-  <div id="metadata" class="rounded">
-    <p>Released: {releaseDate}</p>
-    <p>Directed by {directors}</p>
-    <ul />
-    <p>Starring:</p>
-    <ul>
-      <li>PLACEHOLDER</li>
-      <li>PLACEHOLDER</li>
-    </ul>
-  </div>
+  <Credits credits={data.credits} releaseDate={data.details.release_date} />
 </div>
 
 <style lang="scss">
@@ -45,11 +37,6 @@
     padding: 4rem 2rem 0 2rem;
 
     h2 {
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 2rem;
-    }
-
-    #metadata {
       background-color: rgba(0, 0, 0, 0.9);
       padding: 2rem;
     }
