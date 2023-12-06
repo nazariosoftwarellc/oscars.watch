@@ -20,11 +20,7 @@
 
 <div id="banner" style="background-image: url('{bannerUrl}')">
   <h2 class="rounded">{data.details.title}</h2>
-  <Credits
-    credits={data.credits}
-    releaseDate={data.details.release_date}
-    tagline={data.details.tagline}
-  />
+  <Credits details={data.details} credits={data.credits} />
 </div>
 
 <style lang="scss">
