@@ -1,6 +1,6 @@
 <script lang="ts">
   import Credits from '$lib/components/credits.svelte';
-import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
+  import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
   import dayjs from 'dayjs';
 
   let { data } = $props<{ data: ResolvedMovieDetails }>();
@@ -20,7 +20,11 @@ import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
 
 <div id="banner" style="background-image: url('{bannerUrl}')">
   <h2 class="rounded">{data.details.title}</h2>
-  <Credits credits={data.credits} releaseDate={data.details.release_date} />
+  <Credits
+    credits={data.credits}
+    releaseDate={data.details.release_date}
+    tagline={data.details.tagline}
+  />
 </div>
 
 <style lang="scss">

@@ -1,10 +1,12 @@
 <script lang="ts">
   import type { TMDBMovieCredits } from '$lib/types/tmdb-movie-credits';
   import dayjs from 'dayjs';
+  import CastList from './cast-list.svelte';
 
-  let { credits, releaseDate } = $props<{
+  let { credits, releaseDate, tagline } = $props<{
     credits: TMDBMovieCredits;
     releaseDate: string | Date;
+    tagline: string;
   }>();
   const formattedReleaseDate = $derived(
     dayjs(releaseDate).format('MMMM D, YYYY')
@@ -15,42 +17,14 @@
       .map(person => person.name)
       .join(', ')
   );
-  const featuredCast = $derived(
-    credits.cast.slice(0, 3).map(person => person.name)
-  );
-
-  let castDetailsOpen = $state(false);
-
-  const castSummary = $derived(
-    castDetailsOpen
-      ? ''
-      : featuredCast.join(', ') +
-          (featuredCast.length < credits.cast.length ? '...' : '')
-  );
 </script>
 
 <div id="metadata" class="rounded">
   <p>Released: {formattedReleaseDate}</p>
-  <p>Directed by {directors}</p>
+  <p>Directed by <strong>{directors}</strong></p>
+  <p>{tagline}</p>
   <ul />
-  <p id="starring-label">Starring:</p>
-  <details
-    open={castDetailsOpen}
-    on:toggle={() => (castDetailsOpen = !castDetailsOpen)}
-  >
-    <summary>
-      {castSummary}
-    </summary>
-    <ul>
-      {#each credits.cast as person}
-        <li>
-          <a href={`https://www.themoviedb.org/person/${person.id}`}>
-            {person.name}
-          </a>
-        </li>
-      {/each}
-    </ul>
-  </details>
+  <CastList cast={credits.cast} />
 </div>
 
 <style lang="scss">
@@ -63,13 +37,5 @@
 
   .rounded {
     border-radius: 1rem;
-  }
-
-  summary {
-    cursor: pointer;
-  }
-
-  #starring-label {
-    margin-bottom: 0;
   }
 </style>
