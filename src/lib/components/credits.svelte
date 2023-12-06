@@ -18,18 +18,21 @@
       .join(', ')
   );
 
+  const encodedTitle = $derived(
+    encodeURIComponent(details.title.toLowerCase())
+  );
   const referenceLinks = $derived([
     {
-      name: 'TMDB',
-      href: `https://www.themoviedb.org/movie/${details.id}`
+      name: 'Rotten Tomatoes',
+      href: `https://www.rottentomatoes.com/search/?search=${encodedTitle}#:~:text=MORE%20FRANCHISES...-,MOVIES,-94%25`
+    },
+    {
+      name: 'Metacritic',
+      href: `https://www.metacritic.com/search/${encodedTitle}?page=1&category=2`
     },
     {
       name: 'IMDB',
       href: `https://www.imdb.com/title/${details.imdb_id}`
-    },
-    {
-      name: 'Homepage',
-      href: details.homepage
     }
   ]);
 </script>
