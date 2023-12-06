@@ -39,12 +39,14 @@
   <p>Directed by <strong>{directors}</strong></p>
   <p>{details.tagline}</p>
   <ul />
-  <CastList cast={credits.cast} />
-  <p>
+  <div id="cast-list-container">
+    <CastList cast={credits.cast} />
+  </div>
+  <div id="reference-link-container">
     {#each referenceLinks as { name, href }}
       <a {href} class="reference-link" target="_blank">{name}</a>
     {/each}
-  </p>
+  </div>
 </div>
 
 <style lang="scss">
@@ -55,14 +57,26 @@
     overflow-y: scroll;
   }
 
+  #cast-list-container {
+    margin-bottom: 2.5rem;
+  }
+
   .rounded {
     border-radius: 1rem;
+  }
+
+  #reference-link-container {
+    display: flex;
+    justify-content: center;
   }
 
   .reference-link {
     padding: 0 1rem;
     border-right: 1px solid white;
 
+    &:first-child {
+      padding-left: 0;
+    }
     &:last-child {
       border-right: none;
     }
