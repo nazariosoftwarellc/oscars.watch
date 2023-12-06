@@ -18,6 +18,15 @@
   const featuredCast = $derived(
     credits.cast.slice(0, 3).map(person => person.name)
   );
+
+  let castDetailsOpen = $state(false);
+
+  const castSummary = $derived(
+    castDetailsOpen
+      ? ''
+      : featuredCast.join(', ') +
+          (featuredCast.length < credits.cast.length ? '...' : '')
+  );
 </script>
 
 <div id="metadata" class="rounded">
@@ -25,10 +34,12 @@
   <p>Directed by {directors}</p>
   <ul />
   <p id="starring-label">Starring:</p>
-  <details>
+  <details
+    open={castDetailsOpen}
+    on:toggle={() => (castDetailsOpen = !castDetailsOpen)}
+  >
     <summary>
-      {featuredCast.join(', ')}
-      {featuredCast.length < credits.cast.length && '...'}
+      {castSummary}
     </summary>
     <ul>
       {#each credits.cast as person}
