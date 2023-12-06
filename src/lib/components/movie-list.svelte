@@ -28,9 +28,25 @@
   .movie-poster-container {
     margin: 0 2rem;
     display: inline-block;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      animation: glow 1s infinite alternate;
+    }
 
     &:first-child {
       margin-left: 4rem;
+    }
+  }
+
+  $glow-color: white;
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px -10px $glow-color;
+    }
+    to {
+      box-shadow: 0 0 10px 10px $glow-color;
     }
   }
 </style>
