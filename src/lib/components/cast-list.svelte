@@ -25,8 +25,8 @@
 >
   <summary>
     <div>
-    <strong>Starring</strong>
-    {castSummary}
+      <strong>Starring</strong>
+      {castSummary}
     </div>
     <div class="show-more-cast">
       {castDetailsOpen ? 'Hide' : 'Show All'}
@@ -68,6 +68,6 @@
   .show-more-cast {
     font-size: 0.8em;
     color: #ccc;
-  float: right;
+    float: right;
   }
 </style>
