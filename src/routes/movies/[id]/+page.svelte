@@ -65,7 +65,7 @@
     padding: $main-spacing;
 
     @media (max-width: $mobile) {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
   }
 
