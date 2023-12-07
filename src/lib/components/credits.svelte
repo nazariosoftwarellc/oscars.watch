@@ -3,14 +3,12 @@
   import dayjs from 'dayjs';
   import CastList from './cast-list.svelte';
   import type { TMDBMovieDetails } from '$lib/types/tmdb-movie-details';
+  import { convertToInternationalCurrencySystem } from '$lib/utils';
 
   let { details, credits } = $props<{
     details: TMDBMovieDetails;
     credits: TMDBMovieCredits;
   }>();
-  const formattedReleaseDate = $derived(
-    dayjs(details.release_date).format('MMMM D, YYYY')
-  );
   const directors = $derived(
     credits.crew
       .filter(person => person.job?.toLowerCase() === 'director')
@@ -35,10 +33,30 @@
       href: `https://www.imdb.com/title/${details.imdb_id}`
     }
   ]);
+
+  const metadata = $derived([
+    {
+      name: 'Released',
+      value: dayjs(details.release_date).format('MMMM D, YYYY')
+    },
+    {
+      name: 'Global Box Office',
+      value: '$' + convertToInternationalCurrencySystem(details.revenue)
+    }
+  ]);
 </script>
 
 <div id="metadata" class="rounded">
-  <p>Released: {formattedReleaseDate}</p>
+  <table>
+    <tbody>
+      {#each metadata as {name, value}}
+        <tr>
+          <td>{name}</td>
+          <td class="table-value">{value}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
   <p>Directed by <strong>{directors}</strong></p>
   <p>{details.tagline}</p>
   <ul />
@@ -58,6 +76,10 @@
     padding: 2rem;
     max-height: 40rem;
     overflow-y: scroll;
+  }
+
+  .table-value {
+    text-align: right;
   }
 
   #cast-list-container {
