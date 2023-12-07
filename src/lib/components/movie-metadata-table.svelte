@@ -13,6 +13,10 @@
     {
       name: 'Global Box Office',
       value: '$' + convertToInternationalCurrencySystem(details.revenue)
+    },
+    {
+      name: 'Budget',
+      value: '$' + convertToInternationalCurrencySystem(details.budget)
     }
   ]);
 </script>
