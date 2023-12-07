@@ -24,8 +24,13 @@
   on:toggle={() => (castDetailsOpen = !castDetailsOpen)}
 >
   <summary>
+    <div>
     <strong>Starring</strong>
     {castSummary}
+    </div>
+    <div class="show-more-cast">
+      {castDetailsOpen ? 'Hide' : 'Show All'}
+    </div>
   </summary>
   <ul>
     {#each headlineCast as person}
@@ -48,5 +53,21 @@
 <style lang="scss">
   summary {
     cursor: pointer;
+
+    & > * {
+      display: inline;
+    }
+  }
+
+  details {
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+  }
+
+  .show-more-cast {
+    font-size: 0.8em;
+    color: #ccc;
+  float: right;
   }
 </style>
