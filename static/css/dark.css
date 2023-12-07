@@ -23,7 +23,7 @@ pre {
   background: #141518;
 }
 
-.prettyprint {
+.prettyprint, select {
   color: #f2f2f2;
 }
 

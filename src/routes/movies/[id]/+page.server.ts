@@ -5,5 +5,6 @@ export async function load({ params }): Promise<ResolvedMovieDetails> {
   const movieId = Number(params.id);
   const details = await TMDBConnector.getMovieDetails(movieId);
   const credits = await TMDBConnector.getMovieCredits(movieId);
-  return { details, credits };
+  const watchProviders = await TMDBConnector.getMovieWatchProviders(movieId);
+  return { details, credits, watchProviders };
 }

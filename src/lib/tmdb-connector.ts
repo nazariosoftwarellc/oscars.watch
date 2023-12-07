@@ -3,7 +3,9 @@ import type { TMDBMovieDetails } from './types/tmdb-movie-details';
 import * as bpList from '../mock-data/bp.json';
 import * as eeaao from '../mock-data/movie.json';
 import * as crew from '../mock-data/crew.json';
+import * as wp from '../mock-data/watch.json';
 import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
+import type { TMDBWatchProvidersResponse } from './types/tmdb-watch-provider';
 
 class TMDBConnector {
   // private readToken: string;
@@ -36,6 +38,12 @@ class TMDBConnector {
 
   async getMovieCredits(movieId: number): Promise<TMDBMovieCredits> {
     return JSON.parse(JSON.stringify(crew));
+  }
+
+  async getMovieWatchProviders(
+    movieId: number
+  ): Promise<TMDBWatchProvidersResponse> {
+    return JSON.parse(JSON.stringify(wp));
   }
 }
 
