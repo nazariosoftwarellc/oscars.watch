@@ -36,4 +36,9 @@
   .table-value {
     text-align: right;
   }
+
+  table {
+    // Override milligram's table styles
+    display: table;
+  }
 </style>

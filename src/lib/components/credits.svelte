@@ -35,10 +35,11 @@
 </script>
 
 <div id="metadata" class="rounded">
-  <MovieMetadataTable {details} />
   <p>Directed by <strong>{directors}</strong></p>
-  <p>{details.tagline}</p>
+  <p><em>{details.tagline}</em></p>
+  <MovieMetadataTable {details} />
   <ul />
+  <p>{details.overview}</p>
   <div id="cast-list-container">
     <CastList cast={credits.cast} />
   </div>
@@ -53,7 +54,7 @@
   #metadata {
     background-color: rgba(0, 0, 0, 0.9);
     padding: 2rem;
-    max-height: 40rem;
+    max-width: 45rem;
     overflow-y: scroll;
   }
 
