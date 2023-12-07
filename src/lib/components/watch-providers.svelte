@@ -6,15 +6,36 @@
   }>();
   let selectedLocale = $state('US');
 
+  let watchProvidersForSelectedLocale = $derived(
+    response.results[selectedLocale]
+  );
+
   const englishRegionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 </script>
 
 <div id="providers" class="rounded">
+  <h3>Streaming options</h3>
   <select bind:value={selectedLocale}>
     {#each Object.keys(response.results) as locale}
       <option value={locale}>{englishRegionNames.of(locale)}</option>
     {/each}
   </select>
+  <div id="providers-list">
+    <a
+      href={watchProvidersForSelectedLocale.link}
+      target="_blank"
+      referrerpolicy="no-referrer"
+    >
+      {#each watchProvidersForSelectedLocale.flatrate ?? [] as provider}
+        <div class="provider">
+          <img
+            src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
+            alt={provider.provider_name}
+          />
+        </div>
+      {/each}
+    </a>
+  </div>
 </div>
 
 <style lang="scss">
@@ -26,5 +47,17 @@
   }
   .rounded {
     border-radius: 1rem;
+  }
+
+  #providers-list a {
+    display: flex;
+    flex-wrap: wrap;
+
+    .provider {
+      margin: 0.5rem;
+      img {
+        height: 50px;
+      }
+    }
   }
 </style>
