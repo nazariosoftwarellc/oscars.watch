@@ -20,16 +20,16 @@
   );
   const referenceLinks = $derived([
     {
-      name: 'Rotten Tomatoes',
-      href: `https://www.rottentomatoes.com/search/?search=${encodedTitle}#:~:text=MORE%20FRANCHISES...-,MOVIES,-94%25`
-    },
-    {
       name: 'Metacritic',
       href: `https://www.metacritic.com/search/${encodedTitle}?page=1&category=2`
     },
     {
       name: 'IMDB',
       href: `https://www.imdb.com/title/${details.imdb_id}`
+    },
+    {
+      name: 'Letterboxd',
+      href: `https://letterboxd.com/tmdb/${details.id}/`
     }
   ]);
 </script>
