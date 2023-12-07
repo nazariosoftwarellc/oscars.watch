@@ -43,7 +43,6 @@
     background-color: rgba(0, 0, 0, 0.9);
     padding: 2rem;
     max-width: 45rem;
-    overflow-y: scroll;
   }
   .rounded {
     border-radius: 1rem;
