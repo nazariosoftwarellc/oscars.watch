@@ -1,0 +1,35 @@
+<script lang="ts">
+  import type { TMDBMovieDetails } from '$lib/types/tmdb-movie-details';
+  import { convertToInternationalCurrencySystem } from '$lib/utils';
+  import dayjs from 'dayjs';
+
+  let { details } = $props<{ details: TMDBMovieDetails }>();
+
+  const metadata = $derived([
+    {
+      name: 'Released',
+      value: dayjs(details.release_date).format('MMMM D, YYYY')
+    },
+    {
+      name: 'Global Box Office',
+      value: '$' + convertToInternationalCurrencySystem(details.revenue)
+    }
+  ]);
+</script>
+
+<table>
+  <tbody>
+    {#each metadata as { name, value }}
+      <tr>
+        <td>{name}</td>
+        <td class="table-value">{value}</td>
+      </tr>
+    {/each}
+  </tbody>
+</table>
+
+<style lang="scss">
+  .table-value {
+    text-align: right;
+  }
+</style>

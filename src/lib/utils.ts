@@ -1,3 +1,4 @@
+// courtesy https://stackoverflow.com/a/36734774
 export function convertToInternationalCurrencySystem(
   labelValue: string | number
 ) {
