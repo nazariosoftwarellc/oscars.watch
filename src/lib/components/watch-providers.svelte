@@ -13,7 +13,7 @@
   const englishRegionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 </script>
 
-<div id="providers" class="rounded">
+<aside id="providers" class="rounded">
   <h3>Streaming options</h3>
   <select bind:value={selectedLocale}>
     {#each Object.keys(response.results) as locale}
@@ -36,7 +36,7 @@
       {/each}
     </a>
   </div>
-</div>
+</aside>
 
 <style lang="scss">
   #providers {
