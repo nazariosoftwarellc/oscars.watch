@@ -28,7 +28,10 @@
     <WatchProviders response={data.watchProviders} />
   </div>
   <div id="movie-content-container">
-    {@html data.reviewHtml}
+    {#if data.reviewHtml}
+      <h3>Reviews</h3>
+      {@html data.reviewHtml}
+    {/if}
   </div>
 </section>
 
