@@ -29,9 +29,11 @@
     <div>
       <WatchProviders response={data.watchProviders} />
     </div>
-    <div>
-      <DTDDWarnings dtddTopics={data.dtddTopics} />
-    </div>
+    {#if data.dtddUrl}
+      <div>
+        <DTDDWarnings dtddUrl={data.dtddUrl} />
+      </div>
+    {/if}
   </div>
   <div id="movie-content-container">
     {#if data.reviewHtml}

@@ -18,5 +18,5 @@ export type ResolvedMovieDetails = {
   credits: TMDBMovieCredits;
   watchProviders: TMDBWatchProvidersResponse;
   reviewHtml: string;
-  dtddTopics: DTDDTopic[]
+  dtddUrl: string | undefined;
 }

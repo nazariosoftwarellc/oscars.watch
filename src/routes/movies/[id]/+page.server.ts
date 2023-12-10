@@ -9,7 +9,9 @@ export async function load({ params }): Promise<ResolvedMovieDetails> {
   const credits = await TMDBConnector.getMovieCredits(movieId);
   const watchProviders = await TMDBConnector.getMovieWatchProviders(movieId);
   const reviewHtml = await LocalConnector.reviewQuotes(movieId);
-  const dtddTopics =
-    (await DTDDConnector.getTopicsForMovie(movieId, details.title)) ?? [];
-  return { details, credits, watchProviders, reviewHtml, dtddTopics };
+  const dtddUrl = await DTDDConnector.getDTDDLinkForMovie(
+    movieId,
+    details.title
+  );
+  return { details, credits, watchProviders, reviewHtml, dtddUrl };
 }
