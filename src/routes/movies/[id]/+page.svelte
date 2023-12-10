@@ -1,6 +1,5 @@
 <script lang="ts">
   import Credits from '$lib/components/credits.svelte';
-  import DTDDWarnings from '$lib/components/dtdd-warnings.svelte';
   import WatchProviders from '$lib/components/watch-providers.svelte';
   import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
   import dayjs from 'dayjs';
@@ -29,11 +28,6 @@
     <div>
       <WatchProviders response={data.watchProviders} />
     </div>
-    {#if data.dtddUrl}
-      <div>
-        <DTDDWarnings dtddUrl={data.dtddUrl} />
-      </div>
-    {/if}
   </div>
   <div id="movie-content-container">
     {#if data.reviewHtml}
