@@ -16,4 +16,5 @@ export type ResolvedMovieDetails = {
   details: TMDBMovieDetails;
   credits: TMDBMovieCredits;
   watchProviders: TMDBWatchProvidersResponse;
+  reviewHtml: string;
 }

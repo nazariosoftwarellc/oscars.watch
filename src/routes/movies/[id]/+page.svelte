@@ -28,8 +28,7 @@
     <WatchProviders response={data.watchProviders} />
   </div>
   <div id="movie-content-container">
-    <p>Text</p>
-    <p>More</p>
+    {@html data.reviewHtml}
   </div>
 </section>
 
