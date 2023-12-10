@@ -1,5 +1,6 @@
 <script lang="ts">
   import Credits from '$lib/components/credits.svelte';
+  import DTDDWarnings from '$lib/components/dtdd-warnings.svelte';
   import WatchProviders from '$lib/components/watch-providers.svelte';
   import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
   import dayjs from 'dayjs';
@@ -25,7 +26,12 @@
 </section>
 <section id="main">
   <div id="watch-providers-container">
-    <WatchProviders response={data.watchProviders} />
+    <div>
+      <WatchProviders response={data.watchProviders} />
+    </div>
+    <div>
+      <DTDDWarnings dtddTopics={data.dtddTopics} />
+    </div>
   </div>
   <div id="movie-content-container">
     {#if data.reviewHtml}
@@ -76,6 +82,10 @@
     width: 100%;
     margin-bottom: $main-spacing;
     margin-right: $main-spacing;
+
+    & > * {
+      margin-bottom: $main-spacing;
+    }
   }
 
   #movie-content-container {

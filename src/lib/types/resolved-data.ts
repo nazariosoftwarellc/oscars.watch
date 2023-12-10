@@ -1,3 +1,4 @@
+import type { DTDDTopic } from './dtdd-media-item-stats';
 import type { TMDBMovie } from './tmdb-movie';
 import type { TMDBMovieCredits } from './tmdb-movie-credits';
 import type { TMDBMovieDetails } from './tmdb-movie-details';
@@ -17,4 +18,5 @@ export type ResolvedMovieDetails = {
   credits: TMDBMovieCredits;
   watchProviders: TMDBWatchProvidersResponse;
   reviewHtml: string;
+  dtddTopics: DTDDTopic[]
 }

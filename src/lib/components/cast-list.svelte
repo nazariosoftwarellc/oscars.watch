@@ -52,8 +52,6 @@
 
 <style lang="scss">
   summary {
-    cursor: pointer;
-
     & > * {
       display: inline;
     }
