@@ -65,7 +65,8 @@
 
   #main {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row-reverse;
+    justify-content: center;
     padding: $main-spacing;
 
     @media (max-width: $mobile) {
@@ -86,5 +87,6 @@
 
   #movie-content-container {
     width: 100%;
+    max-width: 50em;
   }
 </style>
