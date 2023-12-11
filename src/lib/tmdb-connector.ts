@@ -1,6 +1,5 @@
 import type { TMDBList } from './types/tmdb-list';
 import type { TMDBMovieDetails } from './types/tmdb-movie-details';
-import * as wp from '../mock-data/watch.json';
 import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
 import type { TMDBWatchProvidersResponse } from './types/tmdb-watch-provider';
 
