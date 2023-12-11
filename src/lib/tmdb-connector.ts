@@ -8,12 +8,12 @@ import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
 import type { TMDBWatchProvidersResponse } from './types/tmdb-watch-provider';
 
 class TMDBConnector {
-  // private readToken: string;
+  private readToken: string;
   constructor() {
-    // this.readToken = process.env.VITE_TMDB_API_READ_TOKEN as string;
-    // if (!this.readToken) {
-    //   throw new Error('VITE_TMDB_API_READ_TOKEN is not defined');
-    // }
+    this.readToken = process.env.VITE_TMDB_API_READ_TOKEN as string;
+    if (!this.readToken) {
+      throw new Error('VITE_TMDB_API_READ_TOKEN is not defined');
+    }
   }
 
   async getList(listId: number): Promise<TMDBList> {
@@ -27,13 +27,12 @@ class TMDBConnector {
   }
 
   async getMovieDetails(movieId: number): Promise<TMDBMovieDetails> {
-    // const url = `https://api.themoviedb.org/3/movie/${movieId}`
-    // const headers = {
-    //   Authorization: `Bearer ${this.readToken}`
-    // }
-    // const response = await fetch(url, { headers });
-    // return await response.json();
-    return JSON.parse(JSON.stringify(eeaao));
+    const url = `https://api.themoviedb.org/3/movie/${movieId}`
+    const headers = {
+      Authorization: `Bearer ${this.readToken}`
+    }
+    const response = await fetch(url, { headers });
+    return await response.json();
   }
 
   async getMovieCredits(movieId: number): Promise<TMDBMovieCredits> {
