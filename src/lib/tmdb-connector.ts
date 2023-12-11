@@ -1,8 +1,5 @@
 import type { TMDBList } from './types/tmdb-list';
 import type { TMDBMovieDetails } from './types/tmdb-movie-details';
-import * as bpList from '../mock-data/bp.json';
-import * as eeaao from '../mock-data/movie.json';
-import * as crew from '../mock-data/crew.json';
 import * as wp from '../mock-data/watch.json';
 import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
 import type { TMDBWatchProvidersResponse } from './types/tmdb-watch-provider';
@@ -16,33 +13,34 @@ class TMDBConnector {
     }
   }
 
-  async getList(listId: number): Promise<TMDBList> {
-    // const url = `https://api.themoviedb.org/3/list/${listId}`
-    // const headers = {
-    //   Authorization: `Bearer ${this.readToken}`
-    // }
-    // const response = await fetch(url, { headers });
-    // return await response.json();
-    return bpList as any;
+  async getList(tmdbListId: number): Promise<TMDBList> {
+    const url = `https://api.themoviedb.org/3/list/${tmdbListId}`;
+    return this.getData(url);
   }
 
-  async getMovieDetails(movieId: number): Promise<TMDBMovieDetails> {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}`
-    const headers = {
-      Authorization: `Bearer ${this.readToken}`
-    }
-    const response = await fetch(url, { headers });
-    return await response.json();
+  async getMovieDetails(tmdbMovieId: number): Promise<TMDBMovieDetails> {
+    const url = `https://api.themoviedb.org/3/movie/${tmdbMovieId}`;
+    return this.getData(url);
   }
 
-  async getMovieCredits(movieId: number): Promise<TMDBMovieCredits> {
-    return JSON.parse(JSON.stringify(crew));
+  async getMovieCredits(tmdbMovieId: number): Promise<TMDBMovieCredits> {
+    const url = `https://api.themoviedb.org/3/movie/${tmdbMovieId}/credits`;
+    return this.getData(url);
   }
 
   async getMovieWatchProviders(
-    movieId: number
+    tmdbMovieId: number
   ): Promise<TMDBWatchProvidersResponse> {
-    return JSON.parse(JSON.stringify(wp));
+    const url = `https://api.themoviedb.org/3/movie/${tmdbMovieId}/watch/providers`;
+    return this.getData(url);
+  }
+
+  private async getData(url: string): Promise<any> {
+    const headers = {
+      Authorization: `Bearer ${this.readToken}`
+    };
+    const response = await fetch(url, { headers });
+    return await response.json();
   }
 }
 
