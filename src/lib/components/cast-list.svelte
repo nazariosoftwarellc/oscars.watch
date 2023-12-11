@@ -68,4 +68,10 @@
     color: #ccc;
     float: right;
   }
+
+  ul {
+    max-height: 15em;
+    overflow-y: scroll;
+  }
+
 </style>
