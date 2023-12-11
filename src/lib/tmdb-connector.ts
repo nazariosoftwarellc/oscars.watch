@@ -34,6 +34,16 @@ class TMDBConnector {
     return this.getData(url);
   }
 
+  async getPersonDetails(tmdbPersonId: number): Promise<TMDBPersonDetails> {
+    const url = `https://api.themoviedb.org/3/person/${tmdbPersonId}`;
+    return this.getData(url);
+  }
+
+  async getPersonCredits(tmdbPersonId: number): Promise<TMDBPersonCreditsResponse> {
+    const url = `https://api.themoviedb.org/3/person/${tmdbPersonId}/combined_credits`;
+    return this.getData(url);
+  }
+
   private async getData(url: string): Promise<any> {
     const headers = {
       Authorization: `Bearer ${this.readToken}`
