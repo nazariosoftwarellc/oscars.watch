@@ -39,7 +39,9 @@ class TMDBConnector {
     return this.getData(url);
   }
 
-  async getPersonCredits(tmdbPersonId: number): Promise<TMDBPersonCreditsResponse> {
+  async getPersonCredits(
+    tmdbPersonId: number
+  ): Promise<TMDBPersonCreditsResponse> {
     const url = `https://api.themoviedb.org/3/person/${tmdbPersonId}/combined_credits`;
     return this.getData(url);
   }

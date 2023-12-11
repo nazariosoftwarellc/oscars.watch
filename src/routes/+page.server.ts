@@ -11,5 +11,5 @@ export async function load(): Promise<ResolvedOscarCategoryList> {
         movies: bestPictureList.items
       }
     ]
-  }
+  };
 }

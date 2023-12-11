@@ -6,20 +6,20 @@ import type { TMDBWatchProvidersResponse } from './tmdb-watch-provider';
 export type OscarCategory = {
   name: string;
   movies: TMDBMovie[];
-}
+};
 
 export type ResolvedOscarCategoryList = {
   categories: OscarCategory[];
-}
+};
 
 export type ResolvedMovieDetails = {
   details: TMDBMovieDetails;
   credits: TMDBMovieCredits;
   watchProviders: TMDBWatchProvidersResponse;
   reviewHtml: string;
-}
+};
 
 export type ResolvedPersonDetails = {
   details: TMDBPersonDetails;
   credits: TMDBPersonCreditsResponse;
-}
+};
