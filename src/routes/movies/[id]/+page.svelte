@@ -34,6 +34,8 @@
 </section>
 
 <style lang="scss">
+  @use 'src/app' as globals;
+
   #banner {
     background-position: center;
     background-repeat: no-repeat;
@@ -55,16 +57,13 @@
     border-radius: 1rem;
   }
 
-  $mobile: 768px;
-  $main-spacing: 2rem;
-
   #main {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
-    padding: $main-spacing;
+    padding: globals.$main-spacing;
 
-    @media (max-width: $mobile) {
+    @media (max-width: globals.$mobile) {
       flex-direction: column;
     }
   }
@@ -72,11 +71,11 @@
   #watch-providers-container {
     max-width: 45rem;
     width: 100%;
-    margin-bottom: $main-spacing;
-    margin-right: $main-spacing;
+    margin-bottom: globals.$main-spacing;
+    margin-right: globals.$main-spacing;
 
     & > * {
-      margin-bottom: $main-spacing;
+      margin-bottom: globals.$main-spacing;
     }
   }
 
