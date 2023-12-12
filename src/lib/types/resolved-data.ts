@@ -22,4 +22,5 @@ export type ResolvedMovieDetails = {
 export type ResolvedPersonDetails = {
   details: TMDBPersonDetails;
   credits: TMDBPersonCreditsResponse;
+  reviewHtml: string;
 };

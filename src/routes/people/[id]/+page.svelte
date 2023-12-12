@@ -1,7 +1,5 @@
 <script lang="ts">
-  import dayjs from 'dayjs';
   import type { ResolvedPersonDetails } from '$lib/types/resolved-data';
-  import { tmdbMostKnownRoles } from '$lib/utils';
   import CalloutBox from '$lib/components/callout-box.svelte';
   import PersonBio from '$lib/components/person-bio.svelte';
 
@@ -12,7 +10,10 @@
   <CalloutBox>
     <PersonBio details={data.details} credits={data.credits} />
   </CalloutBox>
-  <div>main stuff</div>
+  <div>
+    <h3>Reviews</h3>
+    {@html data.reviewHtml}
+  </div>
 </main>
 
 <style lang="scss">

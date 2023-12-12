@@ -16,6 +16,18 @@ class LocalConnector {
       return '';
     }
   }
+
+  async personQuotes(tmdbId: number): Promise<string> {
+    try {
+      const markdown = await readFile(
+        `src/details/people/${tmdbId}.md`,
+        'utf-8'
+      );
+      return converter.makeHtml(markdown);
+    } catch {
+      return '';
+    }
+  }
 }
 
 const singleton = new LocalConnector();
