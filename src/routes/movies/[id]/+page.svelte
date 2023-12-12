@@ -1,4 +1,5 @@
 <script lang="ts">
+  import CalloutBox from '$lib/components/callout-box.svelte';
   import Credits from '$lib/components/credits.svelte';
   import WatchProviders from '$lib/components/watch-providers.svelte';
   import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
@@ -24,11 +25,11 @@
   <Credits details={data.details} credits={data.credits} />
 </section>
 <section id="main">
-  <div id="watch-providers-container">
-    <div>
+  <aside id="watch-providers-container">
+    <CalloutBox>
       <WatchProviders response={data.watchProviders} />
-    </div>
-  </div>
+    </CalloutBox>
+  </aside>
   <div id="movie-content-container">
     {#if data.reviewHtml}
       <h3>Reviews</h3>
