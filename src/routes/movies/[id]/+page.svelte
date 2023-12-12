@@ -9,20 +9,15 @@
   const bannerUrl = $derived(
     'https://image.tmdb.org/t/p/original' + data.details.backdrop_path
   );
-  const releaseDate = $derived(
-    dayjs(data.details.release_date).format('MMMM D, YYYY')
-  );
-  const directors = $derived(
-    data.credits.crew
-      .filter(person => person.job?.toLowerCase() === 'director')
-      .map(person => person.name)
-      .join(', ')
-  );
 </script>
 
 <section id="banner" style="background-image: url('{bannerUrl}')">
-  <h2 class="rounded">{data.details.title}</h2>
-  <Credits details={data.details} credits={data.credits} />
+  <CalloutBox --margin="0 0 2rem 0">
+    <h2 class="rounded">{data.details.title}</h2>
+  </CalloutBox>
+  <CalloutBox>
+    <Credits details={data.details} credits={data.credits} />
+  </CalloutBox>
 </section>
 <section id="main">
   <aside id="watch-providers-container">
@@ -52,8 +47,7 @@
     padding: 4rem 2rem 0 2rem;
 
     h2 {
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 2rem;
+      margin-bottom: 0;
     }
   }
 

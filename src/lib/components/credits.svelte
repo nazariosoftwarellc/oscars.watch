@@ -52,8 +52,6 @@
 
 <style lang="scss">
   #metadata {
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 2rem;
     max-width: 45rem;
   }
 

@@ -8,5 +8,6 @@
     padding: 2rem;
     max-width: 45rem;
     border-radius: 1rem;
+    margin: var(--margin);
   }
 </style>
