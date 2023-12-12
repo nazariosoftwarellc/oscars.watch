@@ -1,6 +1,7 @@
 <script lang="ts">
   import dayjs from 'dayjs';
   import type { ResolvedPersonDetails } from '$lib/types/resolved-data';
+  import { tmdbMostKnownRoles } from '$lib/utils';
 
   let { data } = $props<{ data: ResolvedPersonDetails }>();
 
@@ -17,36 +18,7 @@
   );
 
   let knownForCredits = $derived(
-    (() => {
-      let knownForJobTitle = 'Actor';
-      switch (data.details.known_for_department) {
-        case 'Acting':
-          knownForJobTitle = 'Actor';
-          break;
-        case 'Directing':
-          knownForJobTitle = 'Director';
-          break;
-        case 'Production':
-          knownForJobTitle = 'Producer';
-          break;
-        case 'Writing':
-          knownForJobTitle = 'Writer';
-          break;
-      }
-      let jobs = data.credits.crew.filter(
-        credit => credit.job === knownForJobTitle
-      );
-      if (knownForJobTitle === 'Actor') {
-        jobs = jobs.concat(data.credits.cast);
-      }
-      return jobs
-        .filter(credit => new Date(credit.release_date) < now)
-        .sort((a, b) => {
-          return b.vote_count - a.vote_count;
-        })
-        .filter(credit => credit.vote_average > 7)
-        .slice(0, 5);
-    })()
+    tmdbMostKnownRoles(data.details, data.credits)
   );
 </script>
 

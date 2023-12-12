@@ -13,3 +13,36 @@ export function convertToInternationalCurrencySystem(
         ? +(Math.abs(Number(labelValue)) / 1.0e3).toFixed(2) + 'k'
         : +Math.abs(Number(labelValue));
 }
+
+export function tmdbMostKnownRoles(
+  details: TMDBPersonDetails,
+  credits: TMDBPersonCreditsResponse
+): TMDBPersonCredit[] {
+  const now = new Date();
+  let knownForJobTitle = 'Actor';
+  switch (details.known_for_department) {
+    case 'Acting':
+      knownForJobTitle = 'Actor';
+      break;
+    case 'Directing':
+      knownForJobTitle = 'Director';
+      break;
+    case 'Production':
+      knownForJobTitle = 'Producer';
+      break;
+    case 'Writing':
+      knownForJobTitle = 'Writer';
+      break;
+  }
+  let jobs = credits.crew.filter(credit => credit.job === knownForJobTitle);
+  if (knownForJobTitle === 'Actor') {
+    jobs = jobs.concat(credits.cast);
+  }
+  return jobs
+    .filter(credit => new Date(credit.release_date) < now)
+    .sort((a, b) => {
+      return b.vote_count - a.vote_count;
+    })
+    .filter(credit => credit.vote_average > 7)
+    .slice(0, 5);
+}
