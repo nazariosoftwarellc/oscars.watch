@@ -24,8 +24,7 @@
           return b.popularity - a.popularity;
         })
         .filter(credit => credit.vote_average > 7)
-        .slice(0, 5)
-        .map(credit => credit.title)
+        .slice(0, 5);
     })()
   );
 </script>
@@ -38,7 +37,14 @@
     <div>Known for:</div>
     <ul>
       {#each knownForCredits as credit}
-        <li><em>{credit}</em></li>
+        <li>
+          <em
+            ><a
+              href={'https://www.themoviedb.org/movie/' + credit.id}
+              target="_blank">{credit.title}</a
+            ></em
+          >
+        </li>
       {/each}
     </ul>
   </div>
