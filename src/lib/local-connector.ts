@@ -1,4 +1,5 @@
 import { readFile } from 'fs/promises';
+import path from 'path';
 import showdown from 'showdown';
 
 const converter = new showdown.Converter({
@@ -9,7 +10,7 @@ class LocalConnector {
   async reviewQuotes(tmdbId: number): Promise<string> {
     try {
       const markdown = await readFile(
-        `src/details/movies/${tmdbId}.md`,
+        path.join(path.resolve(), 'src', 'details', 'movies', `${tmdbId}.md`),
         'utf-8'
       );
       return converter.makeHtml(markdown);
