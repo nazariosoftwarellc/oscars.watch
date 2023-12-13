@@ -81,6 +81,6 @@
 
   #movie-content-container {
     width: 100%;
-    max-width: 50em;
+    max-width: globals.$text-body-max-width;
   }
 </style>

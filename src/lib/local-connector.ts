@@ -2,7 +2,8 @@ import { readFile } from 'fs/promises';
 import showdown from 'showdown';
 
 const converter = new showdown.Converter({
-  openLinksInNewWindow: true
+  openLinksInNewWindow: true,
+  splitAdjacentBlockquotes: true
 });
 class LocalConnector {
   async reviewQuotes(tmdbId: number): Promise<string> {

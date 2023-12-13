@@ -7,11 +7,12 @@
 </script>
 
 <main>
-  <CalloutBox>
-    <PersonBio details={data.details} credits={data.credits} />
-  </CalloutBox>
-  <div>
-    <h3>Reviews</h3>
+  <div id="bio-container">
+    <CalloutBox>
+      <PersonBio details={data.details} credits={data.credits} />
+    </CalloutBox>
+  </div>
+  <div id="review-container">
     {@html data.reviewHtml}
   </div>
 </main>
@@ -21,6 +22,7 @@
 
   main {
     display: flex;
+    width: 100%;
     flex-direction: row-reverse;
     justify-content: space-between;
     padding: globals.$main-spacing;
@@ -28,5 +30,17 @@
     @media screen and (max-width: globals.$mobile) {
       flex-direction: column;
     }
+  }
+
+  #bio-container {
+    min-width: 45rem;
+
+    @media screen and (max-width: globals.$mobile) {
+      min-width: 0;
+    }
+  }
+
+  #review-container {
+    max-width: globals.$text-body-max-width;
   }
 </style>
