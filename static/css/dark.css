@@ -43,3 +43,8 @@ code {
 summary {
   cursor: pointer;
 }
+
+iframe {
+  margin: 1em auto;
+  display: block;
+}
