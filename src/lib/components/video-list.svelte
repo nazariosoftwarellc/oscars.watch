@@ -10,6 +10,13 @@
   }
 
   const trailer = $derived(getTrailer(videos));
+  const featuredVideos = $derived(
+    videos.filter(
+      video =>
+        video.type === TMDBVideoType.Featurette ||
+        video.type === TMDBVideoType.BehindTheScenes
+    )
+  );
 </script>
 
 <aside>
@@ -26,7 +33,7 @@
     ></iframe>
   {/if}
   <ul>
-    {#each videos as video}
+    {#each featuredVideos as video}
       <li>
         <a
           href="https://www.youtube.com/watch?v={video.key}"
