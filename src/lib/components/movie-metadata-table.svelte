@@ -5,6 +5,12 @@
 
   let { details } = $props<{ details: TMDBMovieDetails }>();
 
+  function getDollarValue(value: number | undefined): string {
+    return value
+      ? '$' + convertToInternationalCurrencySystem(value)
+      : 'No data provided';
+  }
+
   const metadata = $derived([
     {
       name: 'Released',
@@ -12,13 +18,11 @@
     },
     {
       name: 'Global Box Office',
-      value: details.revenue
-        ? '$' + convertToInternationalCurrencySystem(details.revenue)
-        : 'No data provided'
+      value: getDollarValue(details.revenue)
     },
     {
       name: 'Budget',
-      value: '$' + convertToInternationalCurrencySystem(details.budget)
+      value: getDollarValue(details.budget)
     }
   ]);
 </script>
