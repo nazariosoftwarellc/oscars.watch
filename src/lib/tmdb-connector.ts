@@ -2,6 +2,7 @@ import type { TMDBList } from './types/tmdb-list';
 import type { TMDBMovieDetails } from './types/tmdb-movie-details';
 import type { TMDBMovieCredits } from './types/tmdb-movie-credits';
 import type { TMDBWatchProvidersResponse } from './types/tmdb-watch-provider';
+import type { TMDBVideo } from './types/tmdb-video';
 
 class TMDBConnector {
   private readToken: string;
@@ -32,6 +33,12 @@ class TMDBConnector {
   ): Promise<TMDBWatchProvidersResponse> {
     const url = `https://api.themoviedb.org/3/movie/${tmdbMovieId}/watch/providers`;
     return this.getData(url);
+  }
+
+  async getMovieVideos(tmdbMovieId: number): Promise<TMDBVideo[]> {
+    const url = `https://api.themoviedb.org/3/movie/${tmdbMovieId}/videos`;
+    const response = await this.getData(url);
+    return response.results;
   }
 
   async getPersonDetails(tmdbPersonId: number): Promise<TMDBPersonDetails> {
