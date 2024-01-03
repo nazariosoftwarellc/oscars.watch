@@ -12,7 +12,9 @@
     },
     {
       name: 'Global Box Office',
-      value: '$' + convertToInternationalCurrencySystem(details.revenue)
+      value: details.revenue
+        ? '$' + convertToInternationalCurrencySystem(details.revenue)
+        : 'No data provided'
     },
     {
       name: 'Budget',
