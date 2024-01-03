@@ -3,12 +3,13 @@
   import Credits from '$lib/components/credits.svelte';
   import WatchProviders from '$lib/components/watch-providers.svelte';
   import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
-  import dayjs from 'dayjs';
+  import trailers from '../../../details/trailers';
 
   let { data } = $props<{ data: ResolvedMovieDetails }>();
   const bannerUrl = $derived(
     'https://image.tmdb.org/t/p/original' + data.details.backdrop_path
   );
+  const trailerId = $derived(trailers[data.details.id]);
 </script>
 
 <section id="banner" style="background-image: url('{bannerUrl}')">
@@ -24,6 +25,15 @@
     <CalloutBox>
       <WatchProviders response={data.watchProviders} />
     </CalloutBox>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube-nocookie.com/embed/{trailerId}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
   </aside>
   <div id="movie-content-container">
     {#if data.reviewHtml}

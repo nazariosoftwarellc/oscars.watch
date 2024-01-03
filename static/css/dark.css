@@ -47,4 +47,5 @@ summary {
 iframe {
   margin: 1em auto;
   display: block;
+  max-width: 100%;
 }
