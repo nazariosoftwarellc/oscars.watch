@@ -9,8 +9,14 @@ export type OscarCategory = {
   movies: TMDBMovie[];
 };
 
+export type PeopleCategory = {
+  name: string;
+  people: TMDBPersonDetails[];
+};
+
 export type ResolvedOscarCategoryList = {
-  categories: OscarCategory[];
+  movieCategories: OscarCategory[];
+  peopleCategories: PeopleCategory[];
 };
 
 export type ResolvedMovieDetails = {

@@ -1,5 +1,8 @@
 import TMDBConnector from '$lib/tmdb-connector';
-import type { ResolvedOscarCategoryList } from '$lib/types/resolved-data';
+import type {
+  PeopleCategory,
+  ResolvedOscarCategoryList
+} from '$lib/types/resolved-data';
 import type { TMDBList } from '$lib/types/tmdb-list';
 import { homepageMovieLists, homepagePeopleLists } from '../details/lists';
 
@@ -15,14 +18,17 @@ export async function load(): Promise<ResolvedOscarCategoryList> {
     };
   });
 
-  const tmdbPeople: TMDBPersonDetails[] = [];
+  const peopleCategories: PeopleCategory[] = [];
   for await (const peopleList of homepagePeopleLists) {
+    const newCategory: PeopleCategory = {
+      name: peopleList.name,
+      people: []
+    };
     for (const personId of peopleList.ids) {
-      tmdbPeople.push(await TMDBConnector.getPersonDetails(personId));
+      newCategory.people.push(await TMDBConnector.getPersonDetails(personId));
     }
+    peopleCategories.push(newCategory);
   }
 
-  return {
-    categories: movieCategories
-  };
+  return { movieCategories, peopleCategories };
 }
