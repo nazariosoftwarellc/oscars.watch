@@ -21,7 +21,7 @@
     border: 1px solid;
     overflow: scroll;
     white-space: nowrap;
-    padding: 4rem 0;
+    padding: 4rem 0 0 0;
 
     &::-webkit-scrollbar {
       display: none;
