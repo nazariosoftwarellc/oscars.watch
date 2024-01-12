@@ -10,11 +10,11 @@ class LocalConnector {
   async reviewQuotes(tmdbId: number): Promise<string> {
     try {
       const markdown = await readFile(
-        path.join(path.resolve(), 'src', 'details', 'movies', `${tmdbId}.md`),
+        path.join(process.cwd(), 'src', 'details', 'movies', `${tmdbId}.md`),
         'utf-8'
       );
       return converter.makeHtml(markdown);
-    } catch {
+    } catch (e) {
       return '';
     }
   }
