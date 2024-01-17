@@ -20,10 +20,8 @@ class LocalConnector {
 
   async personQuotes(tmdbId: number): Promise<string> {
     try {
-      const markdown = await readFile(
-        `src/details/people/${tmdbId}.md`,
-        'utf-8'
-      );
+      const files = import.meta.glob('../details/people/*.md', { as: 'raw' });
+      const markdown = await files[`../details/people/${tmdbId}.md`]();
       return converter.makeHtml(markdown);
     } catch {
       return '';
