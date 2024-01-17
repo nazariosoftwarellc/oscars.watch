@@ -1,4 +1,9 @@
-<script lang="ts"></script>
+<script lang="ts">
+  import PageTitle from '$lib/components/page-title.svelte';
+
+</script>
+
+<PageTitle content="Credits" />
 
 <article>
   <h2>Credits</h2>

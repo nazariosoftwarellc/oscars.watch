@@ -1,10 +1,13 @@
 <script lang="ts">
   import MovieList from '$lib/components/movie-list.svelte';
+  import PageTitle from '$lib/components/page-title.svelte';
   import PeopleList from '$lib/components/people-list.svelte';
   import type { ResolvedOscarCategoryList } from '$lib/types/resolved-data';
 
   let { data } = $props<{ data: ResolvedOscarCategoryList }>();
 </script>
+
+<PageTitle content="Oscars.watch" />
 
 {#each data.movieCategories as category}
   <section>

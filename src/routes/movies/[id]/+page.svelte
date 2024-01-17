@@ -1,6 +1,7 @@
 <script lang="ts">
   import CalloutBox from '$lib/components/callout-box.svelte';
   import Credits from '$lib/components/credits.svelte';
+  import PageTitle from '$lib/components/page-title.svelte';
   import VideoList from '$lib/components/video-list.svelte';
   import WatchProviders from '$lib/components/watch-providers.svelte';
   import type { ResolvedMovieDetails } from '$lib/types/resolved-data';
@@ -10,6 +11,8 @@
     'https://image.tmdb.org/t/p/original' + data.details.backdrop_path
   );
 </script>
+
+<PageTitle content="{data.details.title}" />
 
 <section id="banner" style="background-image: url('{bannerUrl}')">
   <CalloutBox --margin="0 0 2rem 0">
