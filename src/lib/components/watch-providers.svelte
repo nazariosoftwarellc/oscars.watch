@@ -1,14 +1,16 @@
 <script lang="ts">
-  import type { TMDBWatchProvidersResponse } from '$lib/types/tmdb-watch-provider';
+  import type {
+    TMDBLocaleWatchProviders,
+    TMDBWatchProvidersResponse
+  } from '$lib/types/tmdb-watch-provider';
 
   let { response } = $props<{
     response: TMDBWatchProvidersResponse;
   }>();
   let selectedLocale = $state('US');
 
-  let watchProvidersForSelectedLocale = $derived(
-    response.results[selectedLocale]
-  );
+  let watchProvidersForSelectedLocale: TMDBLocaleWatchProviders | undefined =
+    $derived(response.results[selectedLocale]);
 
   const englishRegionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 </script>
@@ -20,20 +22,24 @@
   {/each}
 </select>
 <div id="providers-list">
-  <a
-    href={watchProvidersForSelectedLocale.link}
-    target="_blank"
-    referrerpolicy="no-referrer"
-  >
-    {#each watchProvidersForSelectedLocale.flatrate ?? [] as provider}
-      <div class="provider">
-        <img
-          src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
-          alt={provider.provider_name}
-        />
-      </div>
-    {/each}
-  </a>
+  {#if !watchProvidersForSelectedLocale}
+    <p>No streaming options available for this region.</p>
+  {:else}
+    <a
+      href={watchProvidersForSelectedLocale.link}
+      target="_blank"
+      referrerpolicy="no-referrer"
+    >
+      {#each watchProvidersForSelectedLocale.flatrate ?? [] as provider}
+        <div class="provider">
+          <img
+            src={`https://image.tmdb.org/t/p/w45${provider.logo_path}`}
+            alt={provider.provider_name}
+          />
+        </div>
+      {/each}
+    </a>
+  {/if}
 </div>
 
 <style lang="scss">
