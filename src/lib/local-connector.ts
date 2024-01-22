@@ -33,7 +33,7 @@ class LocalConnector {
     try {
       return videoMovieMap[youtubeVideoId];
     } catch {
-      return undefined
+      return undefined;
     }
   }
 }

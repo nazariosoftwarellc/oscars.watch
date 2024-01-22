@@ -1,5 +1,6 @@
 <script lang="ts">
   import { TMDBVideoType, type TMDBVideo } from '$lib/types/tmdb-video';
+  import YoutubeEmbed from '$lib/components/youtube-embed.svelte';
 
   let { videos } = $props<{ videos: TMDBVideo[] }>();
 
@@ -22,15 +23,7 @@
 <aside>
   <h3>Videos</h3>
   {#if trailer}
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube-nocookie.com/embed/{trailer.key}"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-    ></iframe>
+    <YoutubeEmbed videoId={trailer.key} />
   {/if}
   <ul>
     {#each featuredVideos as video}

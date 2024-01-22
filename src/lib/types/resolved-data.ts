@@ -36,4 +36,4 @@ export type ResolvedPersonDetails = {
 export type ResolvedVideoDetails = {
   youtubeVideoId: string;
   movieDetails?: TMDBMovieDetails;
-}
+};
