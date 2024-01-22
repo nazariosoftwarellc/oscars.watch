@@ -1,5 +1,6 @@
 import { readFile } from 'fs/promises';
 import showdown from 'showdown';
+import { videoMovieMap } from '../details/videos';
 
 const converter = new showdown.Converter({
   openLinksInNewWindow: true,
@@ -25,6 +26,14 @@ class LocalConnector {
       return converter.makeHtml(markdown);
     } catch {
       return '';
+    }
+  }
+
+  async tmdbMovieId(youtubeVideoId: string): Promise<number | undefined> {
+    try {
+      return videoMovieMap[youtubeVideoId];
+    } catch {
+      return undefined
     }
   }
 }

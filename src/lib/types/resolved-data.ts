@@ -32,3 +32,8 @@ export type ResolvedPersonDetails = {
   credits: TMDBPersonCreditsResponse;
   reviewHtml: string;
 };
+
+export type ResolvedVideoDetails = {
+  youtubeVideoId: string;
+  movieDetails?: TMDBMovieDetails;
+}
