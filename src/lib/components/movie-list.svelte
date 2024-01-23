@@ -3,9 +3,21 @@
   import MoviePoster from './movie-poster.svelte';
 
   let { movies } = $props<{ movies: TMDBMovie[] }>();
+  let container: HTMLDivElement;
+
+  const scrollStartDelay = Math.random() * 1000;
+
+  setTimeout(() => {
+    setInterval(() => {
+      if (container) {
+        container.scrollLeft += 1;
+      }
+    }, 100)
+  }, scrollStartDelay);
+
 </script>
 
-<div class="poster-list">
+<div bind:this={container} class="poster-list">
   {#each movies as movie}
     <div class="movie-poster-container">
       <MoviePoster {movie} />
