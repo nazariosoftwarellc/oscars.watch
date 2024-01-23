@@ -16,12 +16,12 @@
 
 <section id="banner" style="background-image: url('{bannerUrl}')">
   <div id="desktop-metadata">
-  <CalloutBox --margin="0 0 2rem 0">
-    <h2 class="rounded">{data.details.title}</h2>
-  </CalloutBox>
-  <CalloutBox>
-    <Credits details={data.details} credits={data.credits} />
-  </CalloutBox>
+    <CalloutBox --margin="0 0 2rem 0">
+      <h2 class="rounded">{data.details.title}</h2>
+    </CalloutBox>
+    <CalloutBox>
+      <Credits details={data.details} credits={data.credits} />
+    </CalloutBox>
   </div>
 </section>
 <section id="mobile-metadata">
@@ -31,7 +31,7 @@
   <CalloutBox>
     <Credits details={data.details} credits={data.credits} />
   </CalloutBox>
-  </section>
+</section>
 <section id="main">
   <aside id="watch-providers-container">
     <CalloutBox>
