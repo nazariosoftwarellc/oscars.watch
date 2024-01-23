@@ -8,16 +8,19 @@
   header {
     display: flex;
     justify-content: center;
-    margin: 2em;
-    border-bottom: 2px solid;
+    padding: 2em;
+    background-image: url('/img/curtains.jpg');
+    background-repeat: no-repeat;
 
     a {
       color: white;
     }
   }
+
   #oscars {
     font-weight: bold;
   }
+
   #watch {
     font-weight: normal;
     font-style: italic;
