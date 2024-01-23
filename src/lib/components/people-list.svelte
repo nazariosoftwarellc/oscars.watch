@@ -48,6 +48,7 @@
 
     img {
       transition: all 0.2s ease-in-out;
+      border-radius: 200px;
 
       &:hover {
         transform: scale(1.1);
@@ -56,7 +57,7 @@
     }
   }
 
-  $glow-color: red;
+  $glow-color: white;
   @keyframes glow {
     from {
       box-shadow: 0 0 10px -10px $glow-color;

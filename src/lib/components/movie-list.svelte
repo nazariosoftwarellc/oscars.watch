@@ -49,7 +49,7 @@
     }
   }
 
-  $glow-color: red;
+  $glow-color: white;
   @keyframes glow {
     from {
       box-shadow: 0 0 10px -10px $glow-color;
