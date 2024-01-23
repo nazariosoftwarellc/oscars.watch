@@ -47,12 +47,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     color: white;
-    padding: 4rem 2rem 0 2rem;
+    padding: 4rem globals.$main-spacing 0 globals.$main-spacing;
 
     h2 {
       margin-bottom: 0;
