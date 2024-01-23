@@ -36,3 +36,7 @@ export type ResolvedVideoDetails = {
   youtubeVideoId: string;
   movieDetails?: TMDBMovieDetails;
 };
+
+export type ResolvedSiteCredits = {
+  creditHtml: string;
+};

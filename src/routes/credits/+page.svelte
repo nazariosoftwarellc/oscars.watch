@@ -1,28 +1,13 @@
 <script lang="ts">
   import PageTitle from '$lib/components/page-title.svelte';
 
+  let { data } = $props<{ data: ResolvedSiteCredits }>();
 </script>
 
 <PageTitle content="Credits" />
 
 <article>
-  <h2>Credits</h2>
-  <p>
-    Created by <a href="https://kylenazario.com" target="_blank">Kyle Nazario</a
-    >.
-  </p>
-  <p>
-    Data and images provided by <a
-      href="https://www.themoviedb.org/"
-      target="_blank">The Movie Database</a
-    >.
-  </p>
-  <p>
-    Read the <a
-      href="https://github.com/nazariosoftwarellc/oscars.watch"
-      target="_blank">source code</a
-    > on GitHub.
-  </p>
+  {@html data.creditHtml}
 </article>
 
 <style lang="scss">

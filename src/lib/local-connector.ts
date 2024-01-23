@@ -36,6 +36,16 @@ class LocalConnector {
       return undefined;
     }
   }
+
+  async getSiteCredits(): Promise<string> {
+    try {
+      const files = import.meta.glob('../details/*.md', { as: 'raw' });
+      const markdown = await files['../details/credits.md']();
+      return converter.makeHtml(markdown);
+    } catch (e) {
+      return `Error: could not load credits\n\n${e}`;
+    }
+  }
 }
 
 const singleton = new LocalConnector();
