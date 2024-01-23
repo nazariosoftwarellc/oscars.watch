@@ -3,17 +3,25 @@
   import MoviePoster from './movie-poster.svelte';
 
   let { movies } = $props<{ movies: TMDBMovie[] }>();
-  let container: HTMLDivElement;
+  let container: HTMLDivElement | undefined;
+  let interval: number
 
   const scrollStartDelay = Math.random() * 1000;
+  function stopScrolling() {
+    clearInterval(interval);
+  }
 
   setTimeout(() => {
-    setInterval(() => {
+    interval = setInterval(() => {
       if (container) {
         container.scrollLeft += 1;
       }
     }, 100)
+
+    container?.addEventListener('wheel', stopScrolling);
+    container?.addEventListener('touchstart', stopScrolling);
   }, scrollStartDelay);
+
 
 </script>
 
