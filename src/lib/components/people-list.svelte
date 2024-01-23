@@ -1,10 +1,19 @@
 <script lang="ts">
   import type { PeopleCategory } from '$lib/types/resolved-data';
+  import { autoScrollElement } from '$lib/auto-scroll-element';
 
   let { peopleCategory } = $props<{ peopleCategory: PeopleCategory }>();
+
+  let container: HTMLDivElement | undefined;
+
+  $effect(() => {
+    if (container) {
+      autoScrollElement(container);
+    }
+  });
 </script>
 
-<div class="people-list">
+<div bind:this={container} class="people-list">
   {#each peopleCategory.people as person}
     <a href={'/people/' + person.id} class="person-container">
       <img
