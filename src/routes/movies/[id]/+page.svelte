@@ -73,6 +73,14 @@
     }
   }
 
+  #mobile-metadata {
+    display: block;
+
+    @media (min-width: globals.$mobile) {
+      display: none;
+    }
+  }
+
   .rounded {
     border-radius: 1rem;
   }
