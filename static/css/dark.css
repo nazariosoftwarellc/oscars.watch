@@ -1,7 +1,8 @@
 /* Via https://github.com/milligram/milligram-themes/blob/main/examples/dark.css */
 
 body {
-  background: #2c2f34;
+  /* background: #2c2f34; */
+  background-color: black;
   color: #f2f2f2;
 }
 

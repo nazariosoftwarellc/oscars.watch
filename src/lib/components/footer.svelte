@@ -18,6 +18,7 @@
 <style lang="scss">
   @use 'src/app' as globals;
   footer {
-    padding: 0 globals.$main-spacing;
+    padding: globals.$main-spacing;
+    padding-top: 0;
   }
 </style>

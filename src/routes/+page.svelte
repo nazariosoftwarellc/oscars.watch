@@ -21,7 +21,9 @@
 {/each}
 
 <style lang="scss">
+  @use 'src/app' as globals;
   section {
-    margin: 2rem 5rem;
+    margin: globals.$main-spacing 5rem;
+    margin-bottom: globals.$main-spacing * 2;
   }
 </style>
