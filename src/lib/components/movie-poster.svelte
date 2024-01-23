@@ -11,7 +11,7 @@
 </script>
 
 <a {href}>
-  <img {src} alt="{movie.title} poster" />
+  <img {src} alt="{movie.title} poster" loading="lazy" />
 </a>
 
 <style lang="scss">

@@ -10,6 +10,7 @@
       <img
         src={`https://image.tmdb.org/t/p/w185${person.profile_path}`}
         alt={person.name}
+        loading="lazy"
       />
       <h3>{person.name}</h3>
     </a>
