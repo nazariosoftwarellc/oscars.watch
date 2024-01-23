@@ -38,6 +38,10 @@
     }
   }
 
+  a {
+    color: white;
+  }
+
   .person-container {
     margin: 0 2rem;
     display: inline-block;
