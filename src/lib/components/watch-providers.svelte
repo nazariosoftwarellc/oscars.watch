@@ -23,7 +23,7 @@
 </select>
 <div id="providers-list">
   {#if !watchProvidersForSelectedLocale}
-    <p>No streaming options available for this region.</p>
+    <p>No streaming options available.</p>
   {:else}
     <a
       href={watchProvidersForSelectedLocale.link}

@@ -17,6 +17,7 @@
         video.type === TMDBVideoType.Featurette ||
         video.type === TMDBVideoType.BehindTheScenes
     )
+    .slice(0, 8)
   );
 </script>
 
