@@ -5,7 +5,7 @@
   let { movie } = $props<{ movie: TMDBMovie }>();
 
   const src = $derived(
-    'https://image.tmdb.org/t/p/original' + movie.poster_path
+    'https://image.tmdb.org/t/p/w342' + movie.poster_path
   );
   const href = $derived(base + '/movies/' + movie.id);
 </script>
