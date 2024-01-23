@@ -17,7 +17,7 @@ export function autoScrollElement(element: HTMLElement): void {
       }
       const scrollAmount = scrollingRight ? 1 : -1;
       element.scrollLeft += scrollAmount;
-    }, 100)
+    }, 100);
 
     element.addEventListener('wheel', stopScrolling);
     element.addEventListener('touchstart', stopScrolling);
