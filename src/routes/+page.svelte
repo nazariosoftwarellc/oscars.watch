@@ -25,5 +25,11 @@
   section {
     margin: globals.$main-spacing 5rem;
     margin-bottom: globals.$main-spacing * 2;
+
+    @media screen and (max-width: globals.$mobile) {
+      & {
+        margin: globals.$main-spacing;
+      }
+    }
   }
 </style>

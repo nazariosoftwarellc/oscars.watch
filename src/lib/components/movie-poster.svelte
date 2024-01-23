@@ -16,6 +16,6 @@
 
 <style lang="scss">
   img {
-    height: 40rem;
+    height: 30rem;
   }
 </style>
