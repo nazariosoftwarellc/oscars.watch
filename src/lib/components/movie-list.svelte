@@ -1,27 +1,16 @@
 <script lang="ts">
   import type { TMDBMovie } from '$lib/types/tmdb-movie';
   import MoviePoster from './movie-poster.svelte';
+  import { autoScrollElement } from '$lib/auto-scroll-element';
 
   let { movies } = $props<{ movies: TMDBMovie[] }>();
   let container: HTMLDivElement | undefined;
-  let interval: number
 
-  const scrollStartDelay = Math.random() * 1000;
-  function stopScrolling() {
-    clearInterval(interval);
-  }
-
-  setTimeout(() => {
-    interval = setInterval(() => {
-      if (container) {
-        container.scrollLeft += 1;
-      }
-    }, 100)
-
-    container?.addEventListener('wheel', stopScrolling);
-    container?.addEventListener('touchstart', stopScrolling);
-  }, scrollStartDelay);
-
+  $effect(() => {
+    if (container) {
+      autoScrollElement(container);
+    }
+  });
 
 </script>
 
