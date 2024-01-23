@@ -9,16 +9,14 @@
 
 <PageTitle content="Oscars.watch" />
 
-{#each data.movieCategories as category}
+{#each data.categories as category}
   <section>
     <h2>{category.name}</h2>
-    <MovieList movies={category.movies} />
-  </section>
-{/each}
-{#each data.peopleCategories as category}
-  <section>
-    <h2>{category.name}</h2>
-    <PeopleList peopleCategory={category} />
+    {#if category.movies}
+      <MovieList movies={category.movies} />
+    {:else}
+      <PeopleList peopleCategory={category} />
+    {/if}
   </section>
 {/each}
 

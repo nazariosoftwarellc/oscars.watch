@@ -15,8 +15,7 @@ export type PeopleCategory = {
 };
 
 export type ResolvedOscarCategoryList = {
-  movieCategories: OscarCategory[];
-  peopleCategories: PeopleCategory[];
+  categories: Array<OscarCategory | PeopleCategory>;
 };
 
 export type ResolvedMovieDetails = {
