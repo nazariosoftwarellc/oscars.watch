@@ -24,5 +24,12 @@ export const homepageMovieLists: HomepageMovieList[] = [
 ];
 
 export const homepagePeopleLists: HomepagePeopleList[] = [
-  { name: 'Best Actress', ids: [1812] }
+  { name: 'Best Actor', ids: [51329, 91671, 13242, 2037, 2954] },
+  { name: 'Best Actress', ids: [516, 1183917, 7152, 36662, 54693] },
+  { name: 'Best Supporting Actor', ids: [1225953, 380, 3223, 30614, 103] },
+  {
+    name: 'Best Supporting Actress',
+    ids: [5081, 1075037, 59174, 1038, 1180099]
+  },
+  { name: 'Best Director', ids: [1175620, 1032, 525, 122423, 66728] }
 ];
