@@ -46,3 +46,7 @@ export function tmdbMostKnownRoles(
     .filter(credit => credit.vote_average > 7)
     .slice(0, 5);
 }
+
+export function removeYearFromListName(name: string): string {
+  return name.replace(/\d/g, '');
+}
